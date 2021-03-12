@@ -1,6 +1,6 @@
 # LytonProject
 
-##App Description
+## App Description
 
 Lyton is a Android APP that allows people who love to travel communicate with each other, where
 users can send a post about a trip he/she has done, where users can comment in a specific tourist
@@ -8,9 +8,9 @@ spot. Before starting a new trip, user can get into the APP to find inspiration,
 city.
 
 
-##App features
+## App features
 
-###Must
+### Must
 
 APP must have a login page
 
@@ -34,7 +34,7 @@ APP must allow user to  edit his/hers profit
 
 APP must open GoogleMap (or other Map APP) if user click on a address
 
-###Should
+### Should
 
 APP should allow user to give feedback to developer
 
@@ -44,7 +44,7 @@ APP should be able to find the tourist spot near the user
 
 APP should be able to share a post to another APP
 
-###Could
+### Could
 
 APP could add a background music for a post
 
@@ -54,7 +54,7 @@ APP could have 3 different languages (English, French, Chinese)
 
 APP could suggest "is this what you're looking for" if user is adding a tourist spot which is already added by someone else
 
-###Won't
+### Won't
 
 APP won't have the time but would be a future update to have a database of all tourist spots
 
