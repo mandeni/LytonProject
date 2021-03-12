@@ -11,6 +11,7 @@ city.
 ##App features
 
 APP must have a login page
+
 APP must allow user to search for specific spot 
 APP must allow user to add a new tourist spot
 APP must allow user send message to another user
