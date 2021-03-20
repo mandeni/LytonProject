@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Lyton</string>
+    <string name="chats">Chats</string>
+    <string name="posts">Posts</string>
+    <string name="home_page">Home Page</string>
+    <string name="search">Search</string>
+    <string name="setting">Setting</string>
+    <string name="log_out">Log out</string>
+    <string name="new_post">New Post</string>
+    <string name="new_spot">New Spot</string>
+    <string name="new_chat">New Chat</string>
+ 
 </resources>
