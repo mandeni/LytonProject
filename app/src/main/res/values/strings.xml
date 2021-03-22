@@ -9,5 +9,6 @@
     <string name="new_post">New Post</string>
     <string name="new_spot">New Spot</string>
     <string name="new_chat">New Chat</string>
- 
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

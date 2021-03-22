@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -13,10 +15,14 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener;
+
+import static com.google.android.material.tabs.TabLayout.*;
 
 
 public class HomePage extends AppCompatActivity {
 
+//    Setting of FAB
     FloatingActionButton fab, fabPost, fabChat, fabSpot;
     TextView newPostTextView, newSpotTextView, newChatTextView;
     Float translationYAxis = 100f;
@@ -24,29 +30,58 @@ public class HomePage extends AppCompatActivity {
 
     OvershootInterpolator interpolator = new OvershootInterpolator();
 
+//    Setting of tabs
+    TabLayout tabLayout;
+    ViewPager viewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page);
 
-        Toolbar homePageToolBar = (Toolbar) findViewById(R.id.toolbar_homePage);
+//        FAB
+        Toolbar homePageToolBar = findViewById(R.id.toolbar_homePage);
         setSupportActionBar(homePageToolBar);
 
         showFABMenu();
 
+//        Tabs
+        tabLayout = findViewById(R.id.tabs);
+        viewPager = findViewById(R.id.viewPager);
+        final  ViewPagerAdapter adapter = new ViewPagerAdapter(this, getSupportFragmentManager(),tabLayout.getTabCount());
+
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
+
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+
+
+        });
+
+
     }
 
-
+//  FAB function
     private void showFABMenu() {
         fab = findViewById(R.id.fab);
         fabPost = findViewById(R.id.fab_post);
         fabChat = findViewById(R.id.fab_chat);
         fabSpot = findViewById(R.id.fab_spot);
 
-        newChatTextView = (TextView) findViewById(R.id.new_chat_text_view) ;
-        newPostTextView = (TextView) findViewById(R.id.new_post_text_view) ;
-        newSpotTextView = (TextView) findViewById(R.id.new_spot_text_view) ;
+        newChatTextView = findViewById(R.id.new_chat_text_view);
+        newPostTextView = findViewById(R.id.new_post_text_view);
+        newSpotTextView = findViewById(R.id.new_spot_text_view);
 
         fabPost.setAlpha(0f);
         fabSpot.setAlpha(0f);
@@ -64,36 +99,33 @@ public class HomePage extends AppCompatActivity {
         newPostTextView.setTranslationY(translationYAxis);
         newPostTextView.setTranslationY(translationYAxis);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isFABMenuOpen){
-                    closeFABMenu();
-                }else {
-                    openFABMenu();
-                }
+        fab.setOnClickListener(v -> {
+            if (isFABMenuOpen){
+                closeFABMenu();
+            }else {
+                openFABMenu();
             }
         });
 
-        fabPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(HomePage.this,"New Post is clicked", Toast.LENGTH_SHORT).show();
-            }
+//        onClick for post fab
+        fabPost.setOnClickListener(v -> {
+            Context context = getApplicationContext();
+            Intent intentPost = new Intent(context, NewPost.class);
+            startActivity(intentPost);
         });
 
-        fabSpot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(HomePage.this,"New Spot is clicked",Toast.LENGTH_SHORT).show();
-            }
+//      onClick for spot fab
+        fabSpot.setOnClickListener(v -> {
+            Context context = getApplicationContext();
+            Intent intentPost = new Intent(context, NewSpot.class);
+            startActivity(intentPost);
         });
 
-        fabChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(HomePage.this,"New Chat is clicked",Toast.LENGTH_SHORT).show();
-            }
+//        onClick for chat fab
+        fabChat.setOnClickListener(v -> {
+            Context context = getApplicationContext();
+            Intent intentPost = new Intent(context, NewChat.class);
+            startActivity(intentPost);
         });
     }
 
