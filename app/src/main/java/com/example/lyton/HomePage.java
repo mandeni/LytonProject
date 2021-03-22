@@ -40,10 +40,11 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page);
 
-//        FAB
+//      Toolbar setting
         Toolbar homePageToolBar = findViewById(R.id.toolbar_homePage);
         setSupportActionBar(homePageToolBar);
 
+//        FAB
         showFABMenu();
 
 //        Tabs

@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lyton">
         <activity android:name=".NewChat"></activity>
-        <activity android:name=".NewSpot" />
+        <activity android:name=".NewSpot"
+            android:parentActivityName=".HomePage"/>
         <activity android:name=".NewPost" />
         <activity android:name=".HomePage">
             <intent-filter>
