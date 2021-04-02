@@ -1,21 +1,22 @@
-package com.example.lyton;
+package com.example.lyton.activity;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.lyton.R;
+import com.example.lyton.ViewPagerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayout.OnTabSelectedListener;
 
 import static com.google.android.material.tabs.TabLayout.*;
 
@@ -44,13 +45,24 @@ public class HomePage extends AppCompatActivity {
         Toolbar homePageToolBar = findViewById(R.id.toolbar_homePage);
         setSupportActionBar(homePageToolBar);
 
+//        Navigation View and Drawer Layout
+        NavigationView navigationView = findViewById(R.id.drawer_home_page);
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, homePageToolBar,
+                R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+//        navigationView.setNavigationItemSelectedListener(this);
+
 //        FAB
         showFABMenu();
 
 //        Tabs
         tabLayout = findViewById(R.id.tabs);
         viewPager = findViewById(R.id.viewPager);
-        final  ViewPagerAdapter adapter = new ViewPagerAdapter(this, getSupportFragmentManager(),tabLayout.getTabCount());
+        final ViewPagerAdapter adapter = new ViewPagerAdapter(this, getSupportFragmentManager(),tabLayout.getTabCount());
 
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayoutOnPageChangeListener(tabLayout));
