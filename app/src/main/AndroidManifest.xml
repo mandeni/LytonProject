@@ -16,7 +16,8 @@
 
         <activity android:name=".activity.NewSpot"
             android:parentActivityName=".activity.HomePage"/>
-        <activity android:name=".activity.NewPost" />
+        <activity android:name=".activity.NewPost"
+            android:parentActivityName=".activity.HomePage"/>
         <activity android:name=".activity.HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
