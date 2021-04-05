@@ -9,6 +9,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.animation.OvershootInterpolator;
 import android.widget.TextView;
 
@@ -85,7 +86,14 @@ public class HomePage extends AppCompatActivity {
 
     }
 
-//  FAB function
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home_page,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    //  FAB function
     private void showFABMenu() {
         fab = findViewById(R.id.fab);
         fabPost = findViewById(R.id.fab_post);
