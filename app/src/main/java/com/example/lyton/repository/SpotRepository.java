@@ -3,7 +3,7 @@ package com.example.lyton.repository;
 import androidx.lifecycle.LiveData;
 
 import com.example.lyton.model.Spot;
-import com.example.lyton.model.SpotDao;
+import com.example.lyton.dao.SpotDao;
 
 import java.util.List;
 

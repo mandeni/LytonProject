@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PostFragment">
+    tools:context=".PostFragment"
+    android:id="@+id/fragment_post">
 
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_post"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/posts"
-        android:textSize="50sp"/>
+        android:layout_height="match_parent" />
 
 </FrameLayout>

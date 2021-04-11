@@ -3,24 +3,33 @@ package com.example.lyton.activity;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.lyton.PostFragment;
 import com.example.lyton.R;
+import com.example.lyton.model.Post;
+import com.example.lyton.viewModel.PostViewModel;
 
 public class NewPost extends AppCompatActivity {
 
     private ImageView imageView;
     private EditText editText;
+
+    FragmentManager mFragmentManager;
+
+    //View model variable declared
+    private PostViewModel postViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +43,12 @@ public class NewPost extends AppCompatActivity {
 
         imageView = findViewById(R.id.new_post_image_view);
         editText = findViewById(R.id.new_post_edit_text);
+
+
+//      Setting up View model
+        postViewModel = new ViewModelProvider(this).get(PostViewModel.class);
+
+
     }
 
     public void addPhoto(View view){
@@ -57,22 +72,7 @@ public class NewPost extends AppCompatActivity {
     }
 
     public void save(View view){
-
-        Intent saveIntent = new Intent(this, HomePage.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("Post text", editText.getText().toString());
-        PostFragment  postFragment= new PostFragment();
-        postFragment.setArguments(bundle);
-        startActivity(saveIntent,bundle);
-//        imageView.buildDrawingCache();
-//        Bitmap image= imageView.getDrawingCache();
-//
-//        Bundle extras = new Bundle();
-//        extras.putParcelable("imageBitmap", image);
-//
-//        Intent saveIntent = new Intent(this, PostFragment.class);
-//        saveIntent.putExtra("Post text",editText.getText().toString());
-//        saveIntent.putExtras(extras);
-//        startActivity(saveIntent);
+        postViewModel.insertPost(new Post(editText.getText().toString()));
+        finish();
     }
 }
