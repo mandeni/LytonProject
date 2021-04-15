@@ -1,4 +1,4 @@
-package com.example.lyton;
+package com.example.lyton.activity_fragment;
 
 import android.os.Bundle;
 
@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.lyton.R;
 import com.example.lyton.adapter.PostAdapter;
 import com.example.lyton.databases.PostDatabase;
 import com.example.lyton.model.Post;
@@ -30,7 +31,7 @@ public class PostFragment extends Fragment {
 
     private ArrayList<String> postTextList = new ArrayList<>();
 
-    private ArrayList<Post> posts = new ArrayList<>();
+    private List<Post> posts = new ArrayList<>();
     private PostViewModel postViewModel;
 
 
@@ -56,29 +57,23 @@ public class PostFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_post, container, false);
 
-        //        View Model setup
-        postViewModel = new ViewModelProvider(requireActivity()).get(PostViewModel.class);
-        postViewModel.getAllPosts().observe(getViewLifecycleOwner(), new Observer<List<Post>>(){
 
-            @Override
-            public void onChanged(List<Post> posts) {
-                for (Post post : posts){
-                    postTextList.add(post.getText());
-                }
-            }
-        });
-
-//        RecyclerView setup
+        //        RecyclerView setup
         recyclerView = view.findViewById(R.id.recycler_view_post);
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
-        for (String postText : postTextList) {
-            posts.add(new Post(postText));
-        }
-
         postAdapter = new PostAdapter(posts);
         recyclerView.setAdapter(postAdapter);
+
+        //        View Model setup
+        postViewModel = new ViewModelProvider(requireActivity()).get(PostViewModel.class);
+        postViewModel.getAllPosts().observe(getViewLifecycleOwner(), posts -> postAdapter.updateData(posts));
+
+
+
+
+
 
         return view;
     }

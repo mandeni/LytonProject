@@ -1,4 +1,4 @@
-package com.example.lyton.activity;
+package com.example.lyton.activity_fragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -18,8 +18,8 @@ public class NewChat extends AppCompatActivity {
         setContentView(R.layout.activity_new_chat);
 
         //      Toolbar setting
-        Toolbar newChatToolBar = findViewById(R.id.toolbar_new_chat);
-        setSupportActionBar(newChatToolBar);
+        Toolbar toolBar = findViewById(R.id.toolbar_new_chat);
+        setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }

@@ -1,17 +1,14 @@
-package com.example.lyton.activity;
+package com.example.lyton.activity_fragment;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,8 +17,6 @@ import android.widget.Toast;
 import com.example.lyton.R;
 import com.example.lyton.model.Spot;
 import com.example.lyton.viewModel.SpotViewModel;
-
-import java.util.List;
 
 public class NewSpot extends AppCompatActivity {
 
@@ -37,8 +32,8 @@ public class NewSpot extends AppCompatActivity {
         setContentView(R.layout.activity_new_spot);
 
         //      Toolbar setting
-        Toolbar newSpotToolBar = findViewById(R.id.toolbar_new_spot);
-        setSupportActionBar(newSpotToolBar);
+        Toolbar toolBar = findViewById(R.id.toolbar_new_spot);
+        setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //      View Model

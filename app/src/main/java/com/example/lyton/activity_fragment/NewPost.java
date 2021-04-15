@@ -1,22 +1,19 @@
-package com.example.lyton.activity;
+package com.example.lyton.activity_fragment;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.example.lyton.PostFragment;
 import com.example.lyton.R;
 import com.example.lyton.model.Post;
 import com.example.lyton.viewModel.PostViewModel;
@@ -25,8 +22,7 @@ public class NewPost extends AppCompatActivity {
 
     private ImageView imageView;
     private EditText editText;
-
-    FragmentManager mFragmentManager;
+    private Uri photoUri;
 
     //View model variable declared
     private PostViewModel postViewModel;
@@ -36,9 +32,9 @@ public class NewPost extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
 
-        //      Toolbar setting
-        Toolbar newPostToolBar = findViewById(R.id.toolbar_new_post);
-        setSupportActionBar(newPostToolBar);
+//              Toolbar setting
+        Toolbar toolBar = findViewById(R.id.toolbar_new_post);
+        setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         imageView = findViewById(R.id.new_post_image_view);
@@ -64,7 +60,7 @@ public class NewPost extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             assert data != null;
-            Uri photoUri = data.getData();
+            photoUri = data.getData();
             if (photoUri != null) {
                 imageView.setImageURI(photoUri);
             }

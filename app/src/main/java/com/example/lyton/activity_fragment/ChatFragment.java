@@ -1,4 +1,4 @@
-package com.example.lyton;
+package com.example.lyton.activity_fragment;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.lyton.R;
 
 
 public class ChatFragment extends Fragment {
