@@ -1,8 +1,10 @@
-package com.example.lyton.activity;
+package com.example.lyton.activity_fragment;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
 
@@ -10,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.animation.OvershootInterpolator;
 import android.widget.TextView;
 
@@ -22,20 +25,21 @@ import com.google.android.material.tabs.TabLayout;
 import static com.google.android.material.tabs.TabLayout.*;
 
 
-public class HomePage extends AppCompatActivity {
+public class HomePage extends AppCompatActivity{
 
-//    Setting of FAB
-    FloatingActionButton fab, fabPost, fabChat, fabSpot;
-    TextView newPostTextView, newSpotTextView, newChatTextView;
-    Float translationYAxis = 100f;
-    Boolean isFABMenuOpen = false;
+//    FAB
+    private FloatingActionButton fab, fabPost, fabChat, fabSpot;
+    private TextView newPostTextView, newSpotTextView, newChatTextView;
+    private Float translationYAxis = 100f;
+    private Boolean isFABMenuOpen = false;
+    private OvershootInterpolator interpolator = new OvershootInterpolator();
 
-    OvershootInterpolator interpolator = new OvershootInterpolator();
+//    Tabs
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
-//    Setting of tabs
-    TabLayout tabLayout;
-    ViewPager viewPager;
-
+//    DrawerLayout
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,19 +47,47 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.home_page);
 
 //      Toolbar setting
-        Toolbar homePageToolBar = findViewById(R.id.toolbar_homePage);
-        setSupportActionBar(homePageToolBar);
+        Toolbar toolBar = findViewById(R.id.toolbar_homePage);
+        setSupportActionBar(toolBar);
 
 //        Navigation View and Drawer Layout
         NavigationView navigationView = findViewById(R.id.drawer_home_page);
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout = findViewById(R.id.drawer_layout);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, homePageToolBar,
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolBar,
                 R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
 
-//        navigationView.setNavigationItemSelectedListener(this);
+                Intent intent = new Intent();
+
+                if (id == R.id.item_follow){
+                    intent.setClass(HomePage.this,Follow.class);
+                }
+                if (id == R.id.item_followers){
+                    intent.setClass(HomePage.this,Followers.class);
+                }
+                if (id == R.id.item_my_post){
+                    intent.setClass(HomePage.this,MyPost.class);
+                }
+                if (id == R.id.item_my_trip){
+                    intent.setClass(HomePage.this,MyTrip.class);
+                }
+                if (id == R.id.item_my_wishing_trip){
+                    intent.setClass(HomePage.this,MyWishingList.class);
+                }
+
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+
+                return true;
+            }
+        });
+
 
 //        FAB
         showFABMenu();
@@ -79,14 +111,12 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
             }
-
-
         });
 
 
     }
 
-
+//  Menu inflater for home page menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home_page,menu);
@@ -175,4 +205,17 @@ public class HomePage extends AppCompatActivity {
         newPostTextView.animate().translationY(translationYAxis).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.setting_menu_home_page){
+            Intent intent = new Intent(this, SettingActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }
