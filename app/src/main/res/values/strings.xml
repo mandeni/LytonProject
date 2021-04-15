@@ -1,14 +1,23 @@
 <resources>
+    <!--   App name-->
     <string name="app_name">Lyton</string>
+
+    <!--   Home page -->
     <string name="chats">Chats</string>
     <string name="posts">Posts</string>
     <string name="home_page">Home Page</string>
     <string name="search">Search</string>
-    <string name="setting">Setting</string>
+
+    <!--    Home page menu-->
+    <string name="setting">Settings</string>
     <string name="log_out">Log out</string>
+
+    <!--    Home page FAB-->
     <string name="new_post">New Post</string>
     <string name="new_spot">New Spot</string>
     <string name="new_chat">New Chat</string>
+
+    <!--    New spot activity-->
     <string name="name_of_new_spot">Name: </string>
     <string name="hint_for_new_spot">Name of the spot</string>
     <string name="country">Country: </string>
@@ -17,19 +26,59 @@
     <string name="Description">Description: </string>
     <string name="save">Save</string>
     <string name="add_photo">Add photo</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    New chat activity-->
     <string name="search_hint">Search for a new friend</string>
     <string name="my_friends">My friends</string>
     <string name="done">Done</string>
+
+    <!--    New post activity-->
     <string name="hint_for_new_post">Put something</string>
     <string name="tag_a_spot">Tag a spot:</string>
+
+    <!--    Navigation view-->
     <string name="my_post">My post</string>
     <string name="followers">Followers</string>
+    <string name="follow">Follow</string>
     <string name="social">Social</string>
     <string name="trips">Trips</string>
     <string name="my_trip">My Trips</string>
     <string name="my_wishing_list">My Wishing List</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!--        Preference Category-->
+    <string name="language_and_theme">Language and Theme</string>
+    <string name="feedback">Feedback</string>
+    <string name="feedback_summary">We are glad to hear some feedback from you!</string>
+
+
+    <!--        Setting theme-->
+    <string name="theme">Theme</string>
+
+    <string-array name="theme">
+        <item>Day</item>
+        <item>Night</item>
+    </string-array>
+
+    <string-array name="themeAlias">
+        <item>day</item>
+        <item>night</item>
+    </string-array>
+
+    <!--        Setting language-->
+    <string name="language">Language</string>
+
+    <string-array name="language">
+        <item>English</item>
+        <item>Français</item>
+        <item>简体中文</item>
+    </string-array>
+
+    <string-array name="languageAlias">
+        <item>eng</item>
+        <item>fr</item>
+        <item>cn</item>
+    </string-array>
 
 </resources>
