@@ -1,5 +1,6 @@
 package com.example.lyton.model;
 
+import android.net.Uri;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -8,10 +9,10 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Post {
-    @PrimaryKey()
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private String text;
-//    private ImageView photo;
+//    private Uri photoUri;
 
     public void setText(String text) {
         this.text = text;
@@ -27,15 +28,15 @@ public class Post {
 
     public Post(String text){
         this.text = text;
-//        this.photo = photo;
+//        this.photoUri = photoUri;
     }
 
     public String getText() {
         return text;
     }
 
-//    public ImageView getPhoto() {
-//        return photo;
+//    public Uri getPhotoUrl() {
+//        return photoUri;
 //    }
 
 }

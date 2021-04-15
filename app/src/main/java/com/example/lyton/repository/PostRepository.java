@@ -3,6 +3,7 @@ package com.example.lyton.repository;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.lyton.dao.PostDao;
 import com.example.lyton.dao.SpotDao;
@@ -17,7 +18,6 @@ public class PostRepository {
 
     private PostDao postDao;
     private static PostRepository instance;
-    private LiveData<List<Post>> allPosts;
     private ExecutorService executorService;
 
     private PostRepository(Application application){
@@ -39,6 +39,6 @@ public class PostRepository {
         executorService.execute(() -> postDao.insert(post));}
 
     public LiveData<List<Post>> getAllPosts() {
-        return allPosts;
+        return postDao.getAllPosts();
     }
 }

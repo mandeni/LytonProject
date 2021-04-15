@@ -13,12 +13,13 @@ import com.example.lyton.R;
 import com.example.lyton.model.Post;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
-    private ArrayList<Post> posts;
+    private List<Post> posts;
 
-    public PostAdapter(ArrayList<Post> posts) {
+    public PostAdapter(List<Post> posts) {
         this.posts = posts;
     }
 
@@ -42,7 +43,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         return posts.size();
     }
 
-
+    public void updateData(List<Post> posts) {
+        this.posts = posts;
+        notifyDataSetChanged();
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
