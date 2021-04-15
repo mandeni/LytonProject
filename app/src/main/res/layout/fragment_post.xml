@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PostFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activity_fragment.PostFragment"
     android:id="@+id/fragment_post">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_post"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 
 </FrameLayout>
