@@ -23,6 +23,7 @@ public class NewSpot extends AppCompatActivity {
     private EditText name, country, city, address, description;
     private SpotViewModel spotViewModel;
     private ImageView imageView;
+    private Uri photoUri;
 
 
 
@@ -45,19 +46,6 @@ public class NewSpot extends AppCompatActivity {
         imageView = findViewById(R.id.select_image_view);
 
         spotViewModel = new ViewModelProvider(this).get(SpotViewModel.class);
-        spotViewModel.getAllSpot().observe(this, spots -> {
-
-        });
-    }
-
-    public void saveSpot(View view){
-        if (imageView == null) {
-            spotViewModel.insertSpot(new Spot(name.getText().toString(), country.getText().toString(),
-                    city.getText().toString(), address.getText().toString(), description.getText().toString()));
-        }
-
-        this.finish();
-        Toast.makeText(this,"Add new spot successfully", Toast.LENGTH_SHORT).show();
     }
 
     public void addPhoto(View view){
@@ -72,10 +60,17 @@ public class NewSpot extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
-            Uri photoUri = data.getData();
+            photoUri = data.getData();
             if (photoUri != null) {
              imageView.setImageURI(photoUri);
             }
         }
+    }
+
+    public void saveSpot(View view){
+        spotViewModel.insertSpot(new Spot(name.getText().toString(), country.getText().toString(),
+                city.getText().toString(), address.getText().toString(), description.getText().toString(),photoUri.getScheme()));
+        finish();
+        Toast.makeText(this,"Add new spot successfully", Toast.LENGTH_SHORT).show();
     }
 }
