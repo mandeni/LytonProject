@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    android:fitsSystemWindows="true"
     tools:openDrawer="start"
     tools:context=".activity_fragment.HomePage">
 
@@ -16,9 +15,8 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            style="@style/Widget.MaterialComponents.ActionBar.Primary"
-            android:background="#C8E6C9"
             android:id="@+id/toolbar_homePage"
+            android:background="@color/green_1"
             app:title="@string/home_page"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -48,14 +46,11 @@
         android:id="@+id/drawer_home_page"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="#C8E6C9"
-        android:fitsSystemWindows="true"
+        android:background="@color/green_1"
         app:headerLayout="@layout/navigation_view_header_home_page"
         app:menu="@menu/menu_navigation_view_home_page"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_gravity="start"/>
-
-
-
+        android:fitsSystemWindows="true"
+        android:layout_gravity="start"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     </androidx.drawerlayout.widget.DrawerLayout>

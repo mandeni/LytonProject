@@ -14,8 +14,7 @@
         android:id="@+id/toolbar_settings"
         app:title="@string/setting"/>
 
-    <include
-        layout="@layout/fragment_setting"/>
+    <include layout="@layout/fragment_setting"/>
 
 
 </LinearLayout>

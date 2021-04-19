@@ -8,9 +8,8 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         app:title="@string/my_trip"
-        android:background="@color/green_1"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/toolbar_my_trip"/>
 
