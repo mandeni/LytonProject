@@ -26,6 +26,7 @@
     <string name="Description">Description: </string>
     <string name="save">Save</string>
     <string name="add_photo">Add photo</string>
+    <string name="add_to_wishing_list">Add to my wishing list</string>
 
     <!--    New chat activity-->
     <string name="search_hint">Search for a new friend</string>
@@ -37,7 +38,6 @@
     <string name="tag_a_spot">Tag a spot:</string>
 
     <!--    Navigation view-->
-    <string name="my_post">My post</string>
     <string name="followers">Followers</string>
     <string name="follow">Follow</string>
     <string name="social">Social</string>
@@ -55,24 +55,29 @@
 
     <!--        Setting theme-->
     <string name="theme">Theme</string>
+    <string name="day">Day</string>
+    <string name="night">Night</string>
 
     <string-array name="theme">
-        <item>Day</item>
-        <item>Night</item>
+        <item>@string/day</item>
+        <item>@string/night</item>
     </string-array>
 
     <string-array name="themeAlias">
-        <item>day</item>
-        <item>night</item>
+        <item>@string/day</item>
+        <item>@string/night</item>
     </string-array>
 
     <!--        Setting language-->
     <string name="language">Language</string>
+    <string name="english">English</string>
+    <string name="french">Français</string>
+    <string name="chinese">简体中文</string>
 
     <string-array name="language">
-        <item>English</item>
-        <item>Français</item>
-        <item>简体中文</item>
+        <item>@string/english</item>
+        <item>@string/french</item>
+        <item>@string/chinese</item>
     </string-array>
 
     <string-array name="languageAlias">

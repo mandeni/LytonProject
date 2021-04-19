@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    Page Background-->
+
+    <style name="page_background_night_theme">
+        <item name="android:background">@color/grey_3</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:toolbarStyle">@style/toolbar_night_theme</item>
+        <item name="tabBackground">@color/grey_3</item>
+        <item name="tabIndicatorColor">@color/grey_2</item>
+        <item name="tabTextColor">@color/white</item>
+    </style>
+
+<!--    Toolbar-->
+    <style name="toolbar_day_theme" parent="Widget.MaterialComponents.ActionBar.Primary">
+        <item name="android:background">@color/green_1</item>
+        <item name="android:titleTextColor">@color/black</item>
+    </style>
+
+    <style name="toolbar_night_theme" parent="Widget.MaterialComponents.ActionBar.Primary">
+        <item name="android:background">@color/grey_3</item>
+        <item name="android:titleTextColor">@color/white</item>
+    </style>
+
+<!--Tab Layout-->
+    <style name="tabs_day_theme" parent="Widget.MaterialComponents.TabLayout">
+        <item name="android:background">@color/green_1</item>
+        <item name="tabIndicatorColor">@color/grey_2</item>
+        <item name="tabTextColor">@color/blue_2</item>
+    </style>
+
+    <style name="tabs_night_theme" parent="Widget.MaterialComponents.TabLayout">
+        <item name="android:background">@color/grey_3</item>
+        <item name="tabIndicatorColor">@color/grey_2</item>
+        <item name="tabTextColor">@color/white</item>
+    </style>
+
+<!--    Floating Action Button-->
+    <style name="fabs_day_theme" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/blue_1</item>
+    </style>
+
+    <style name="fab_text_view_day_theme" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_marginTop">22dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="fabs_night_theme." parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/grey_2</item>
+    </style>
+
+    <style name="fab_text_view_night_theme" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_marginTop">22dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+<!--    Navigation View-->
+    <style name="navigation_view_day_theme" parent="Widget.Design.NavigationView">
+        <item name="background">@color/green_1</item>
+        <item name="itemTextColor">@color/black</item>
+    </style>
+
+    <style name="navigation_view_night_theme" parent="Widget.Design.NavigationView">
+        <item name="android:background">@color/grey_3</item>
+        <item name="itemTextColor">@color/white</item>
+
+    </style>
+
+<!--    Navigation View header Text View-->
+    <style name="navigation_header_text_view_day_theme" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginTop">40dp</item>
+    </style>
+
+    <style name="navigation_header_text_view_night_theme" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginTop">40dp</item>
+    </style>
+
+
+
+</resources>
