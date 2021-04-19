@@ -9,10 +9,8 @@
     <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#C8E6C9"
-        app:tabIndicatorColor="#81C784"
-        app:tabTextColor="#1976D2"
         android:id="@+id/tabs"
+        style="@style/tabs_day_theme"
         android:layout_gravity="fill">
 
         <com.google.android.material.tabs.TabItem

@@ -20,17 +20,17 @@
                 android:id="@+id/new_post_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
+                style="@style/fab_text_view_day_theme"
                 android:text="@string/new_post" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_post"
+                app:fabSize="mini"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/fabs_day_theme"
                 android:layout_margin="8dp"
-                android:backgroundTint="#90CAF9"
                 android:src="@drawable/ic_baseline_post_add_24"
-                app:fabSize="mini"
                 android:contentDescription="@string/new_post" />
 
 
@@ -45,18 +45,19 @@
                 android:id="@+id/new_chat_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
+                style="@style/fab_text_view_day_theme"
                 android:text="@string/new_chat" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_chat"
+                app:fabSize="mini"
+                style="@style/fabs_day_theme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_margin="8dp"
                 android:contentDescription="@string/new_chat"
-                android:backgroundTint="#90CAF9"
-                android:src="@drawable/ic_baseline_chat_24"
-                app:fabSize="mini" />
+                android:src="@drawable/ic_baseline_chat_24"/>
 
         </LinearLayout>
 
@@ -69,17 +70,18 @@
                 android:id="@+id/new_spot_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
+                style="@style/fab_text_view_day_theme"
                 android:text="@string/new_spot" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_spot"
+                app:fabSize="mini"
+                android:layout_margin="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:backgroundTint="#90CAF9"
+                style="@style/fabs_day_theme"
                 android:src="@drawable/ic_baseline_tour_24"
-                app:fabSize="mini" />
+                android:contentDescription="@string/new_spot" />
 
         </LinearLayout>
 
@@ -92,12 +94,12 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab"
+                app:fabSize="normal"
+                android:layout_margin="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:backgroundTint="#90CAF9"
-                android:src="@drawable/ic_baseline_add_24"
-                app:fabSize="normal" />
+                style="@style/fabs_day_theme"
+                android:src="@drawable/ic_baseline_add_24"/>
 
 
         </LinearLayout>
