@@ -45,8 +45,8 @@
         android:id="@+id/linear_layout_photo_post">
 
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="60dp"
             android:id="@+id/photo_post_image_view"/>
     </LinearLayout>

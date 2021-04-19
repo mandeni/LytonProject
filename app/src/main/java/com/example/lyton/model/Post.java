@@ -12,7 +12,12 @@ public class Post {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String text;
-//    private Uri photoUri;
+    private String photoUri;
+
+    public Post(String text,String photoUri){
+        this.text = text;
+        this.photoUri = photoUri;
+    }
 
     public void setText(String text) {
         this.text = text;
@@ -26,17 +31,16 @@ public class Post {
         this.id = id;
     }
 
-    public Post(String text){
-        this.text = text;
-//        this.photoUri = photoUri;
-    }
-
     public String getText() {
         return text;
     }
 
-//    public Uri getPhotoUrl() {
-//        return photoUri;
-//    }
+    public String getPhotoUri() {
+        return photoUri;
+    }
+
+    public void setPhotoUri(String photoUri) {
+        this.photoUri = photoUri;
+    }
 
 }

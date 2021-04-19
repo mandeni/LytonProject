@@ -44,8 +44,8 @@ public class PostFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//      Initializing view model
-        postViewModel = new ViewModelProvider(this).get(PostViewModel.class);
+////      Initializing view model
+//        postViewModel = new ViewModelProvider(this).get(PostViewModel.class);
 
     }
 
@@ -69,11 +69,6 @@ public class PostFragment extends Fragment {
         //        View Model setup
         postViewModel = new ViewModelProvider(requireActivity()).get(PostViewModel.class);
         postViewModel.getAllPosts().observe(getViewLifecycleOwner(), posts -> postAdapter.updateData(posts));
-
-
-
-
-
 
         return view;
     }

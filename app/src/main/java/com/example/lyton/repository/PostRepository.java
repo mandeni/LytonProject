@@ -3,13 +3,10 @@ package com.example.lyton.repository;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import com.example.lyton.dao.PostDao;
-import com.example.lyton.dao.SpotDao;
 import com.example.lyton.databases.PostDatabase;
 import com.example.lyton.model.Post;
-import com.example.lyton.model.Spot;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -37,6 +34,10 @@ public class PostRepository {
 
     public void insertPost(Post post) {
         executorService.execute(() -> postDao.insert(post));}
+
+    public void deletePost(Post post){
+        executorService.execute(() -> postDao.delete(post));
+    }
 
     public LiveData<List<Post>> getAllPosts() {
         return postDao.getAllPosts();

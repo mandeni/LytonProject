@@ -1,5 +1,7 @@
 package com.example.lyton.adapter;
 
+import android.app.Application;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.lyton.R;
 import com.example.lyton.model.Post;
 
@@ -32,10 +35,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PostAdapter.ViewHolder holder, int position) {
-//        holder.postPhoto.setI(posts.get(position).getUserName());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.photoUri = Uri.parse(posts.get(position).getPhotoUri());
         holder.postText.setText(posts.get(position).getText());
-
     }
 
     @Override
@@ -51,6 +53,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView postText;
+        private Uri photoUri;
         private ImageView postPhoto;
 
         public ViewHolder(@NonNull View itemView) {
@@ -58,8 +61,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
             postText = itemView.findViewById(R.id.post_text_view);
 //            userPhoto = itemView.findViewById(R.id.user_post_image_view);
+
             postPhoto = itemView.findViewById(R.id.photo_post_image_view);
-//            itemView.setOnClickListener((View.OnClickListener)this);
+            Glide.with(itemView.getContext())
+                    .load(photoUri)
+                    .override(150,150)
+                    .into(postPhoto);
         }
 
     }

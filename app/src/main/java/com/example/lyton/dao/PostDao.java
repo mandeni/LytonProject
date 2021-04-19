@@ -25,32 +25,5 @@ public interface PostDao {
 
     @Query("SELECT * FROM Post ORDER BY id DESC")
     LiveData<List<Post>> getAllPosts();
-//    private MutableLiveData<List<Post>> allPost;
-//    private static PostDao instance;
-//
-//
-//    private PostDao(){
-//        allPost= new MutableLiveData<>();
-//        List<Post> newList = new ArrayList<>();
-//        allPost.setValue(newList);
-//    }
-//
-//    public static PostDao getInstance() {
-//        if (instance == null){
-//            instance = new PostDao();
-//        }
-//
-//        return instance;
-//    }
-//
-//    public LiveData<List<Post>> getAllPost() {
-//        return allPost;
-//    }
-//
-//
-//    public void insertPost(Post post) {
-//        List<Post> currentList = allPost.getValue();
-//        currentList.add(post);
-//        allPost.setValue(currentList);
-//    }
+
 }
