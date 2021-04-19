@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_fragment.Followers">
+    tools:context=".activity_fragment.MyFriends">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:title="@string/followers"
+        android:layout_height="?attr/actionBarSize"
+        app:title="@string/my_friends"
         android:background="@color/green_1"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/toolbar_followers"/>
+        android:id="@+id/toolbar_my_friends"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_followers"
+        android:id="@+id/recycler_view_my_friends"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_followers" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_my_friends" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
