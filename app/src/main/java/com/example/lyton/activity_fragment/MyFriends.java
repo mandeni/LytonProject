@@ -9,22 +9,22 @@ import android.os.Bundle;
 
 import com.example.lyton.R;
 
-public class Followers extends AppCompatActivity {
+public class MyFriends extends AppCompatActivity {
 
     private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_followers);
+        setContentView(R.layout.activity_my_friends);
 
         //      Toolbar setting
-        Toolbar toolBar = findViewById(R.id.toolbar_followers);
+        Toolbar toolBar = findViewById(R.id.toolbar_my_friends);
         setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //        RecyclerView setup
-        recyclerView = findViewById(R.id.recycler_view_followers);
+        recyclerView = findViewById(R.id.recycler_view_my_friends);
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

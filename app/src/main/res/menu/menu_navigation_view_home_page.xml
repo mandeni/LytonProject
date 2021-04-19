@@ -7,20 +7,9 @@
         android:title="@string/social">
         <menu>
             <group android:checkableBehavior="single">
-
-
                 <item
-                    android:title="@string/my_post"
-                    android:id="@+id/item_my_post"/>
-
-                <item
-                    android:title="@string/followers"
-                    android:id="@+id/item_followers"/>
-
-                <item
-                    android:title="@string/follow"
-                    android:id="@+id/item_follow"/>
-
+                    android:title="@string/my_friends"
+                    android:id="@+id/item_friends"/>
             </group>
         </menu>
 
