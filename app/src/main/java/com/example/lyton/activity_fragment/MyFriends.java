@@ -9,9 +9,9 @@ import android.os.Bundle;
 
 import com.example.lyton.R;
 
-public class MyFriends extends AppCompatActivity {
+import java.util.Objects;
 
-    private RecyclerView recyclerView;
+public class MyFriends extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class MyFriends extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //        RecyclerView setup
-        recyclerView = findViewById(R.id.recycler_view_my_friends);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_my_friends);
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

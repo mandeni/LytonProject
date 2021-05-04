@@ -15,8 +15,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.lyton.R;
+import com.example.lyton.adapter.SpotAdapter;
 import com.example.lyton.model.Spot;
 import com.example.lyton.viewModel.SpotViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NewSpot extends AppCompatActivity {
 
@@ -24,7 +28,8 @@ public class NewSpot extends AppCompatActivity {
     private SpotViewModel spotViewModel;
     private ImageView imageView;
     private Uri photoUri;
-
+    private SpotAdapter spotAdapter;
+    private List<Spot> spots = new ArrayList<>();
 
 
     @Override
@@ -45,7 +50,9 @@ public class NewSpot extends AppCompatActivity {
         description = findViewById(R.id.description_spot);
         imageView = findViewById(R.id.select_image_view);
 
+        spotAdapter = new SpotAdapter(spots);
         spotViewModel = new ViewModelProvider(this).get(SpotViewModel.class);
+        spotViewModel.getAllSpot().observe(this, spots -> spotAdapter.updateData(spots));
     }
 
     public void addPhoto(View view){
@@ -60,16 +67,18 @@ public class NewSpot extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
+            assert data != null;
             photoUri = data.getData();
             if (photoUri != null) {
-             imageView.setImageURI(photoUri);
+                imageView.setImageURI(photoUri);
             }
         }
     }
 
     public void saveSpot(View view){
         spotViewModel.insertSpot(new Spot(name.getText().toString(), country.getText().toString(),
-                city.getText().toString(), address.getText().toString(), description.getText().toString(),photoUri.getScheme()));
+                city.getText().toString(), address.getText().toString(),
+                description.getText().toString(), photoUri.toString()));
         finish();
         Toast.makeText(this,"Add new spot successfully", Toast.LENGTH_SHORT).show();
     }

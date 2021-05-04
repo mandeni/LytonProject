@@ -14,40 +14,11 @@
     app:layout_constraintTop_toTopOf="parent"
     android:id="@+id/toolbar_new_chat"/>
 
-    <SearchView
-        android:layout_width="match_parent"
-        app:layout_constraintVertical_weight="0"
-        android:layout_height="wrap_content"
-        android:queryHint="@string/search_hint"
-        android:iconifiedByDefault="false"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_new_chat"
-        android:id="@+id/search_view_chat"/>
-
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_new_chat"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_view_chat">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/my_friends"
-            android:textColor="@color/black"
-            android:textSize="20sp"/>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_new_chat"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </ScrollView>
-
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_new_chat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

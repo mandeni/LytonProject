@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.lyton">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>
 
     <application
         android:allowBackup="true"
@@ -15,41 +23,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Lyton">
-        <activity android:name=".activity_fragment.MyWishingList"
-            android:parentActivityName=".activity_fragment.HomePage">
-
-        </activity>
-
-        <activity android:name=".activity_fragment.MyTrip"
+        <activity android:name=".activity_fragment.ChatActivity"
             android:parentActivityName=".activity_fragment.HomePage"/>
-
-        <activity android:name=".activity_fragment.Follow"
-            android:parentActivityName=".activity_fragment.HomePage"/>
-
+        <activity android:name=".activity_fragment.SignInActivity" />
         <activity
-            android:name=".activity_fragment.Followers"
+            android:name=".activity_fragment.MyWishingList"
             android:parentActivityName=".activity_fragment.HomePage" />
-
         <activity
-            android:name=".activity_fragment.MyPost"
+            android:name=".activity_fragment.MyTrip"
             android:parentActivityName=".activity_fragment.HomePage" />
-
+        <activity
+            android:name=".activity_fragment.MyFriends"
+            android:parentActivityName=".activity_fragment.HomePage" />
         <activity
             android:name=".activity_fragment.SettingActivity"
             android:parentActivityName=".activity_fragment.HomePage" />
-
         <activity
             android:name=".activity_fragment.NewChat"
             android:parentActivityName=".activity_fragment.HomePage" />
-
         <activity
             android:name=".activity_fragment.NewSpot"
             android:parentActivityName=".activity_fragment.HomePage" />
-
         <activity
             android:name=".activity_fragment.NewPost"
             android:parentActivityName=".activity_fragment.HomePage" />
-
         <activity android:name=".activity_fragment.HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,6 +1,5 @@
 package com.example.lyton.adapter;
 
-import android.app.Application;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +8,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.lyton.R;
+import com.example.lyton.activity_fragment.PostFragment;
 import com.example.lyton.model.Post;
+import com.example.lyton.viewModel.HomePageViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
@@ -36,8 +37,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.photoUri = Uri.parse(posts.get(position).getPhotoUri());
         holder.postText.setText(posts.get(position).getText());
+        Glide.with(holder.postPhoto)
+                .load(posts.get(position).getPhotoUri())
+                .override(300,400)
+                .into(holder.postPhoto);
+
     }
 
     @Override
@@ -53,20 +58,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView postText;
-        private Uri photoUri;
         private ImageView postPhoto;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             postText = itemView.findViewById(R.id.post_text_view);
-//            userPhoto = itemView.findViewById(R.id.user_post_image_view);
-
             postPhoto = itemView.findViewById(R.id.photo_post_image_view);
-            Glide.with(itemView.getContext())
-                    .load(photoUri)
-                    .override(150,150)
-                    .into(postPhoto);
         }
 
     }

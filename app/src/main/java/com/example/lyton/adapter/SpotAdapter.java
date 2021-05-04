@@ -1,5 +1,6 @@
 package com.example.lyton.adapter;
 
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.lyton.R;
-import com.example.lyton.model.Post;
 import com.example.lyton.model.Spot;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.ViewHolder> {
         this.spots = spots;
     }
 
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -32,8 +34,13 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         holder.spotTextView.setText(spots.get(position).getName());
-        holder.locationTextView.setText(spots.get(position).getCountry() + spots.get(position).getCity());
+        holder.locationTextView.setText(spots.get(position).getCountry() + " " + spots.get(position).getCity());
+        Glide.with(holder.imageView)
+                .load(spots.get(position).getPhotoUri())
+                .override(370,400)
+                .into(holder.imageView);
     }
 
     @Override

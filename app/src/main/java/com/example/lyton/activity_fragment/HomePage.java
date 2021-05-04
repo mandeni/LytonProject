@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
@@ -15,42 +16,53 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.OvershootInterpolator;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lyton.R;
-import com.example.lyton.ViewPagerAdapter;
+import com.example.lyton.adapter.ViewPagerAdapter;
+import com.example.lyton.viewModel.HomePageViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 import static com.google.android.material.tabs.TabLayout.*;
 
 
 public class HomePage extends AppCompatActivity{
 
-//    FAB
-    private FloatingActionButton fab, fabPost, fabChat, fabSpot;
+    private FloatingActionButton fabPost;
+    private FloatingActionButton fabChat;
+    private FloatingActionButton fabSpot;
     private TextView newPostTextView, newSpotTextView, newChatTextView;
-    private Float translationYAxis = 100f;
+    private final Float translationYAxis = 100f;
     private Boolean isFABMenuOpen = false;
-    private OvershootInterpolator interpolator = new OvershootInterpolator();
+    private final OvershootInterpolator interpolator = new OvershootInterpolator();
 
-//    Tabs
-    private TabLayout tabLayout;
     private ViewPager viewPager;
 
 //    DrawerLayout
     private DrawerLayout drawerLayout;
 
+    private HomePageViewModel viewModel;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        viewModel = new ViewModelProvider(this).get(HomePageViewModel.class);
+        checkIfSignedIn();
         setContentView(R.layout.home_page);
 
-//      Toolbar setting
+        //      Toolbar setting
         Toolbar toolBar = findViewById(R.id.toolbar_homePage);
         setSupportActionBar(toolBar);
 
-//        Navigation View and Drawer Layout
+
+        //        Navigation View and Drawer Layout
         NavigationView navigationView = findViewById(R.id.drawer_home_page);
         drawerLayout = findViewById(R.id.drawer_layout);
 
@@ -58,49 +70,32 @@ public class HomePage extends AppCompatActivity{
                 R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-
-                Intent intent = new Intent();
-
-                if (id == R.id.item_follow){
-                    intent.setClass(HomePage.this,Follow.class);
-                }
-                if (id == R.id.item_followers){
-                    intent.setClass(HomePage.this,Followers.class);
-                }
-                if (id == R.id.item_my_post){
-                    intent.setClass(HomePage.this,MyPost.class);
-                }
-                if (id == R.id.item_my_trip){
-                    intent.setClass(HomePage.this,MyTrip.class);
-                }
-                if (id == R.id.item_my_wishing_trip){
-                    intent.setClass(HomePage.this,MyWishingList.class);
-                }
-
-                startActivity(intent);
-                drawerLayout.closeDrawer(GravityCompat.START);
-
-                return true;
+        navigationView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+            Intent intent = new Intent();
+            if (id == R.id.item_my_wishing_trip){
+                intent.setClass(HomePage.this,MyWishingList.class);
             }
+
+            startActivity(intent);
+            drawerLayout.closeDrawer(GravityCompat.START);
+
+            return true;
         });
 
 
-//        FAB
+        //        FAB
         showFABMenu();
 
-//        Tabs
-        tabLayout = findViewById(R.id.tabs);
+        //    Tabs
+        TabLayout tabLayout = findViewById(R.id.tabs);
         viewPager = findViewById(R.id.viewPager);
-        final ViewPagerAdapter adapter = new ViewPagerAdapter(this, getSupportFragmentManager(),tabLayout.getTabCount());
-
+        final ViewPagerAdapter adapter = new ViewPagerAdapter(this,
+                getSupportFragmentManager(),
+                tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
-
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
@@ -113,10 +108,44 @@ public class HomePage extends AppCompatActivity{
             }
         });
 
-
     }
 
-//  Menu inflater for home page menu
+    private void checkIfSignedIn() {
+        viewModel.getCurrentUser().observe(this, user -> {
+            if (user != null) {
+                String message = "Welcome " + user.getDisplayName();
+                Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+
+                //  Create user in Firebase
+                FirebaseDatabase firebaseDatabase;
+                firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference reference = firebaseDatabase.getReference();
+
+                String userId = user.getUid();
+                String email = user.getEmail();
+                String userName = user.getDisplayName();
+                HashMap<String,Object> hashMap = new HashMap<>();
+                hashMap.put("name", userName);
+                hashMap.put("id",userId);
+                hashMap.put("email",email);
+
+                reference.child("Users").child(userId).setValue(hashMap);
+
+            } else
+                startLoginActivity();
+        });
+    }
+
+    private void startLoginActivity() {
+        startActivity(new Intent(this, SignInActivity.class));
+        finish();
+    }
+
+    public void signOut() {
+        viewModel.signOut();
+    }
+
+    //  Menu inflater for home page menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home_page,menu);
@@ -125,7 +154,8 @@ public class HomePage extends AppCompatActivity{
 
     //  FAB function
     private void showFABMenu() {
-        fab = findViewById(R.id.fab);
+        //    FAB
+        FloatingActionButton fab = findViewById(R.id.fab);
         fabPost = findViewById(R.id.fab_post);
         fabChat = findViewById(R.id.fab_chat);
         fabSpot = findViewById(R.id.fab_spot);
@@ -214,8 +244,10 @@ public class HomePage extends AppCompatActivity{
             startActivity(intent);
             return true;
         }
+        if (id == R.id.log_out_menu_home_page){
+            signOut();
+            startLoginActivity();
+        }
         return super.onOptionsItemSelected(item);
     }
-
-
 }

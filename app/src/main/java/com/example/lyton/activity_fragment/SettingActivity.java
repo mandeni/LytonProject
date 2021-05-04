@@ -18,6 +18,7 @@ public class SettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
+
         //      Toolbar setting
         Toolbar toolBar = findViewById(R.id.toolbar_settings);
         setSupportActionBar(toolBar);
@@ -33,4 +34,5 @@ public class SettingActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

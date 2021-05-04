@@ -11,8 +11,6 @@ import com.example.lyton.R;
 
 public class MyTrip extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +22,7 @@ public class MyTrip extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //        RecyclerView setup
-        recyclerView = findViewById(R.id.recycler_view_my_trip);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_my_trip);
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

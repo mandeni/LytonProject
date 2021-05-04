@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,7 +14,6 @@ import android.view.ViewGroup;
 
 import com.example.lyton.R;
 import com.example.lyton.adapter.PostAdapter;
-import com.example.lyton.databases.PostDatabase;
 import com.example.lyton.model.Post;
 import com.example.lyton.viewModel.PostViewModel;
 
@@ -25,11 +23,8 @@ import java.util.List;
 
 public class PostFragment extends Fragment {
 
-    private RecyclerView recyclerView;
     private PostAdapter postAdapter;
 
-
-    private ArrayList<String> postTextList = new ArrayList<>();
 
     private List<Post> posts = new ArrayList<>();
     private PostViewModel postViewModel;
@@ -43,10 +38,6 @@ public class PostFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-////      Initializing view model
-//        postViewModel = new ViewModelProvider(this).get(PostViewModel.class);
-
     }
 
     @Override
@@ -59,7 +50,7 @@ public class PostFragment extends Fragment {
 
 
         //        RecyclerView setup
-        recyclerView = view.findViewById(R.id.recycler_view_post);
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_view_post);
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 

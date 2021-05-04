@@ -47,6 +47,9 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <!--  Sign in activity  -->
+    <string name="sign_in">Sign In</string>
+
     <!--        Preference Category-->
     <string name="language_and_theme">Language and Theme</string>
     <string name="feedback">Feedback</string>
@@ -73,6 +76,12 @@
     <string name="english">English</string>
     <string name="french">Français</string>
     <string name="chinese">简体中文</string>
+    <string name="profile_photo">Profile Photo</string>
+    <string name="photo">Photo</string>
+    <string name="more">More</string>
+    <string name="user_name">User Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="submit">Submit</string>
 
     <string-array name="language">
         <item>@string/english</item>
