@@ -12,31 +12,31 @@ city.
 
 ### Must
 
-APP must have a login page
+APP must have a login page (fulfilled)
 
 APP must allow user to search for specific spot 
 
-APP must allow user to add a new tourist spot
+APP must allow user to add a new tourist spot (fulfilled)
 
-APP must allow user send message to another user
+APP must allow user send message to another user (fulfilled)
 
-APP must allow user upload image on this App
+APP must allow user upload image on this App (fulfilled)
 
-APP must allow user post a trip with text and image
+APP must allow user post a trip with text and image (fulfilled)
 
 APP must allow user like a someone else's post
 
-APP must allow user friend another user
+APP must allow user friend another user (partly fulfilled)
 
 APP must allow user to comment below a post
 
-APP must allow user to  edit his/hers profit
+APP must allow user to edit his/hers profit
 
-APP must open GoogleMap (or other Map APP) if user click on a address
+APP must open GoogleMap (or other Map APP) if user click on a address (fulfilled)
 
 ### Should
 
-APP should allow user to give feedback to developer
+APP should allow user to give feedback to developer (fulfilled)
 
 APP should have a day theme and a night theme
 

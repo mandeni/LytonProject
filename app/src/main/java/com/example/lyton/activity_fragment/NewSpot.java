@@ -26,10 +26,8 @@ public class NewSpot extends AppCompatActivity {
 
     private EditText name, country, city, address, description;
     private SpotViewModel spotViewModel;
-    private ImageView imageView;
-    private Uri photoUri;
-    private SpotAdapter spotAdapter;
-    private List<Spot> spots = new ArrayList<>();
+    private ImageView photo;
+    private Uri spotPhotoUri;
 
 
     @Override
@@ -48,18 +46,16 @@ public class NewSpot extends AppCompatActivity {
         city = findViewById(R.id.city_spot);
         address = findViewById(R.id.address_spot);
         description = findViewById(R.id.description_spot);
-        imageView = findViewById(R.id.select_image_view);
+        photo = findViewById(R.id.select_image_view);
 
-        spotAdapter = new SpotAdapter(spots);
         spotViewModel = new ViewModelProvider(this).get(SpotViewModel.class);
-        spotViewModel.getAllSpot().observe(this, spots -> spotAdapter.updateData(spots));
     }
 
-    public void addPhoto(View view){
+    public void addSpotPhoto(View view){
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(intent,1);
+            startActivityForResult(intent,2);
         }
     }
 
@@ -68,9 +64,9 @@ public class NewSpot extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             assert data != null;
-            photoUri = data.getData();
-            if (photoUri != null) {
-                imageView.setImageURI(photoUri);
+            spotPhotoUri = data.getData();
+            if (spotPhotoUri != null) {
+                photo.setImageURI(spotPhotoUri);
             }
         }
     }
@@ -78,7 +74,7 @@ public class NewSpot extends AppCompatActivity {
     public void saveSpot(View view){
         spotViewModel.insertSpot(new Spot(name.getText().toString(), country.getText().toString(),
                 city.getText().toString(), address.getText().toString(),
-                description.getText().toString(), photoUri.toString()));
+                description.getText().toString(), spotPhotoUri.toString()));
         finish();
         Toast.makeText(this,"Add new spot successfully", Toast.LENGTH_SHORT).show();
     }

@@ -2,6 +2,7 @@ package com.example.lyton.activity_fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,17 +12,24 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.lyton.R;
-import com.example.lyton.model.Conversation;
+import com.example.lyton.adapter.UsersAdapter;
+import com.example.lyton.model.Users;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class ChatFragment extends Fragment {
 
-
+    private RecyclerView recyclerView;
     private DatabaseReference databaseReference;
-    private List<Conversation> conversations;
+    private UsersAdapter usersAdapter;
+    private List<Users> users = new ArrayList<>();
 
     public ChatFragment() {
         // Required empty public constructor
@@ -36,28 +44,30 @@ public class ChatFragment extends Fragment {
 
 
         //        RecyclerView setup
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view_chat);
+        recyclerView = view.findViewById(R.id.recycler_view_chat);
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
         //  Database setup
-//        databaseReference = FirebaseDatabase.getInstance().getReference("Chats");
-//        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if (snapshot.exists()) {
-//                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                        Conversation conv = dataSnapshot.getValue(Conversation.class);
-//                        conversations.add(conv);
-//                    }
-//                    convAdapter = new ConvAdapter(conversations);
-//                    recyclerView.setAdapter(convAdapter);
-//                }
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//            }
-//        });
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        Users u = dataSnapshot.getValue(Users.class);
+                        users.add(u);
+                    }
+                    usersAdapter = new UsersAdapter(users);
+                    recyclerView.setAdapter(usersAdapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
         return view;
     }
 }

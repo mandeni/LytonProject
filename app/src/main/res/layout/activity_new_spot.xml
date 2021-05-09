@@ -50,7 +50,6 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:hint="@string/hint_for_new_spot"
                 android:id="@+id/name_spot"/>
 
         </LinearLayout>
@@ -154,15 +153,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="16dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_camera_alt_24"
                 android:clickable="true"
-                android:onClick="addPhoto"
+                android:onClick="addSpotPhoto"
                 android:focusable="true" />
 
             <TextView

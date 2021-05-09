@@ -37,7 +37,6 @@ public class NewPost extends AppCompatActivity {
 
     //View model variable declared
     private PostViewModel postViewModel;
-    private SpotViewModel spotViewModel;
 
 
     @Override
@@ -45,18 +44,17 @@ public class NewPost extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
 
-//              Toolbar setting
+        //              Toolbar setting
         Toolbar toolBar = findViewById(R.id.toolbar_new_post);
         setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-//        Views initiate
+        //        Views initiate
         imageView = findViewById(R.id.new_post_image_view);
         editText = findViewById(R.id.new_post_edit_text);
 
-//      Setting up View model
+        //      Setting up View model
         postViewModel = new ViewModelProvider(this).get(PostViewModel.class);
-        spotViewModel = new ViewModelProvider(this).get(SpotViewModel.class);
 
     }
 

@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.lyton.R;
 import com.example.lyton.adapter.MessageAdapter;
@@ -68,11 +69,13 @@ public class ChatActivity extends AppCompatActivity {
         send = findViewById(R.id.button_send);
         send.setOnClickListener(v -> {
             EditText messageView = findViewById(R.id.message_edit_text);
+            TextView senderTextView = findViewById(R.id.user_name_messages);
             String message = messageView.getText().toString();
 
             if (!message.equals("")) {
                 sendButton(senderId, senderName, receiverId, receiverName,message);
                 messageView.setText("");
+                senderTextView.setText(senderName);
             }
         });
 

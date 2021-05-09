@@ -3,12 +3,14 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginLeft="8dp"
+    android:layout_marginBottom="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/user_name_messages"
+        android:textColor="@color/grey_2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:text="@string/user_name"/>
@@ -18,7 +20,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/message_conversation"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:textSize="20dp"
         android:text="messages"
         app:layout_constraintTop_toBottomOf="@id/user_name_messages"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

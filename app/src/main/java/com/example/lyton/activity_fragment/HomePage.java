@@ -1,19 +1,19 @@
 package com.example.lyton.activity_fragment;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.text.TextUtils;
 import android.view.animation.OvershootInterpolator;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.Locale;
 
 import static com.google.android.material.tabs.TabLayout.*;
 
@@ -35,9 +36,8 @@ import static com.google.android.material.tabs.TabLayout.*;
 public class HomePage extends AppCompatActivity{
 
     private FloatingActionButton fabPost;
-    private FloatingActionButton fabChat;
     private FloatingActionButton fabSpot;
-    private TextView newPostTextView, newSpotTextView, newChatTextView;
+    private TextView newPostTextView, newSpotTextView;
     private final Float translationYAxis = 100f;
     private Boolean isFABMenuOpen = false;
     private final OvershootInterpolator interpolator = new OvershootInterpolator();
@@ -49,10 +49,21 @@ public class HomePage extends AppCompatActivity{
 
     private HomePageViewModel viewModel;
 
+    private Locale locale = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        final Configuration config = getBaseContext().getResources().getConfiguration();
+        final String language = PreferenceManager.getDefaultSharedPreferences(this).
+                getString("language", "");
+        if (!TextUtils.isEmpty(language) && !config.locale.getLanguage().equals(language))
+        {
+            locale = new Locale(language);
+            config.setLocale(locale);
+        }
         viewModel = new ViewModelProvider(this).get(HomePageViewModel.class);
         checkIfSignedIn();
         setContentView(R.layout.home_page);
@@ -75,6 +86,13 @@ public class HomePage extends AppCompatActivity{
             Intent intent = new Intent();
             if (id == R.id.item_my_wishing_trip){
                 intent.setClass(HomePage.this,MyWishingList.class);
+            }
+            if(id == R.id.setting_navigation_view){
+                intent.setClass(this, SettingActivity.class);
+            }
+            if (id == R.id.log_out_navigation_view){
+                signOut();
+                intent.setClass(this, SignInActivity.class);
             }
 
             startActivity(intent);
@@ -130,51 +148,37 @@ public class HomePage extends AppCompatActivity{
                 hashMap.put("email",email);
 
                 reference.child("Users").child(userId).setValue(hashMap);
-
-            } else
-                startLoginActivity();
+            } else{
+                startActivity(new Intent(this, SignInActivity.class));
+                finish();
+            }
         });
     }
 
-    private void startLoginActivity() {
-        startActivity(new Intent(this, SignInActivity.class));
-        finish();
-    }
 
     public void signOut() {
         viewModel.signOut();
     }
 
-    //  Menu inflater for home page menu
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_home_page,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
     //  FAB function
     private void showFABMenu() {
         //    FAB
         FloatingActionButton fab = findViewById(R.id.fab);
         fabPost = findViewById(R.id.fab_post);
-        fabChat = findViewById(R.id.fab_chat);
         fabSpot = findViewById(R.id.fab_spot);
 
-        newChatTextView = findViewById(R.id.new_chat_text_view);
         newPostTextView = findViewById(R.id.new_post_text_view);
         newSpotTextView = findViewById(R.id.new_spot_text_view);
 
         fabPost.setAlpha(0f);
         fabSpot.setAlpha(0f);
-        fabChat.setAlpha(0f);
 
-        newChatTextView.setAlpha(0f);
         newPostTextView.setAlpha(0f);
         newSpotTextView.setAlpha(0f);
 
         fabPost.setTranslationY(translationYAxis);
         fabSpot.setTranslationY(translationYAxis);
-        fabChat.setTranslationY(translationYAxis);
 
         newSpotTextView.setTranslationY(translationYAxis);
         newPostTextView.setTranslationY(translationYAxis);
@@ -188,24 +192,17 @@ public class HomePage extends AppCompatActivity{
             }
         });
 
-//        onClick for post fab
+        //        onClick for post fab
         fabPost.setOnClickListener(v -> {
             Context context = getApplicationContext();
             Intent intentPost = new Intent(context, NewPost.class);
             startActivity(intentPost);
         });
 
-//      onClick for spot fab
+        //      onClick for spot fab
         fabSpot.setOnClickListener(v -> {
             Context context = getApplicationContext();
             Intent intentPost = new Intent(context, NewSpot.class);
-            startActivity(intentPost);
-        });
-
-//        onClick for chat fab
-        fabChat.setOnClickListener(v -> {
-            Context context = getApplicationContext();
-            Intent intentPost = new Intent(context, NewChat.class);
             startActivity(intentPost);
         });
     }
@@ -215,11 +212,9 @@ public class HomePage extends AppCompatActivity{
         isFABMenuOpen = true;
 
         fabSpot.animate().translationY(0f).alpha(1f).setInterpolator(interpolator).setDuration(300).start();
-        fabChat.animate().translationY(0f).alpha(1f).setInterpolator(interpolator).setDuration(300).start();
         fabPost.animate().translationY(0f).alpha(1f).setInterpolator(interpolator).setDuration(300).start();
 
         newSpotTextView.animate().translationY(0f).alpha(1f).setInterpolator(interpolator).setDuration(300).start();
-        newChatTextView.animate().translationY(0f).alpha(1f).setInterpolator(interpolator).setDuration(300).start();
         newPostTextView.animate().translationY(0f).alpha(1f).setInterpolator(interpolator).setDuration(300).start();
     }
 
@@ -227,27 +222,11 @@ public class HomePage extends AppCompatActivity{
         isFABMenuOpen = false;
 
         fabSpot.animate().translationY(translationYAxis).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
-        fabChat.animate().translationY(translationYAxis).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
         fabPost.animate().translationY(translationYAxis).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
 
         newSpotTextView.animate().translationY(translationYAxis).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
-        newChatTextView.animate().translationY(translationYAxis).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
         newPostTextView.animate().translationY(translationYAxis).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if(id == R.id.setting_menu_home_page){
-            Intent intent = new Intent(this, SettingActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        if (id == R.id.log_out_menu_home_page){
-            signOut();
-            startLoginActivity();
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

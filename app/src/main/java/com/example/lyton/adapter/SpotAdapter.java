@@ -1,10 +1,13 @@
 package com.example.lyton.adapter;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,7 +29,7 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.ViewHolder> {
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SpotAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.spot_items,parent,false);
         return new SpotAdapter.ViewHolder(view);
@@ -36,11 +39,22 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         holder.spotTextView.setText(spots.get(position).getName());
-        holder.locationTextView.setText(spots.get(position).getCountry() + " " + spots.get(position).getCity());
+        holder.locationTextView.setText(spots.get(position).getCountry() + " " +
+                spots.get(position).getCity());
         Glide.with(holder.imageView)
                 .load(spots.get(position).getPhotoUri())
-                .override(370,400)
+                .override(300,400)
                 .into(holder.imageView);
+        holder.spotLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("geo:0,0?q=" + spots.get(position).getAddress());
+                Intent map = new Intent(Intent.ACTION_VIEW, uri);
+                if (map.resolveActivity(v.getContext().getPackageManager()) != null) {
+                    v.getContext().startActivity(map);
+                }
+            }
+        });
     }
 
     @Override
@@ -53,16 +67,18 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.ViewHolder> {
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView imageView;
         private TextView spotTextView;
         private TextView locationTextView;
+        private LinearLayout spotLinearLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.spot_image_view);
             spotTextView = itemView.findViewById(R.id.spot_name_text_view);
             locationTextView = itemView.findViewById(R.id.location_text_view);
+            spotLinearLayout = itemView.findViewById(R.id.spot_linear_layout);
         }
     }
 }

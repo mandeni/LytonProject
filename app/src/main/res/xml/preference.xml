@@ -1,30 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!--    <PreferenceCategory android:title="@string/language_and_theme">-->
-
-<!--        <ListPreference-->
-<!--            android:key="@string/theme"-->
-<!--            android:title="@string/theme"-->
-<!--            android:icon="@drawable/ic_baseline_color_lens_24"-->
-<!--            android:entries="@array/theme"-->
-<!--            android:entryValues="@array/themeAlias"/>-->
-
-
-<!--        <ListPreference-->
-<!--            android:key="@string/language"-->
-<!--            android:title="@string/language"-->
-<!--            android:icon="@drawable/ic_baseline_language_24"-->
-<!--            android:entries="@array/language"-->
-<!--            android:entryValues="@array/languageAlias"/>-->
-
-<!--    </PreferenceCategory>-->
+    <PreferenceCategory android:title="@string/language">
+        <ListPreference
+            android:key="@string/language"
+            android:title="@string/language"
+            android:defaultValue="en"
+            android:icon="@drawable/ic_baseline_language_24"
+            android:entries="@array/language"
+            android:entryValues="@array/languageAlias"/>
+    </PreferenceCategory>
 
     <PreferenceCategory>
         <Preference
             android:key="@string/feedback"
             android:title="@string/feedback"
-            android:summary="@string/feedback_summary"/>
+            android:summary="@string/feedback_summary" />
     </PreferenceCategory>
 
 

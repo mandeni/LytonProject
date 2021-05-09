@@ -3,18 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-<!--    <item-->
-<!--        android:title="@string/social">-->
-<!--        <menu>-->
-<!--            <group android:checkableBehavior="single">-->
-<!--                <item-->
-<!--                    android:title="@string/my_friends"-->
-<!--                    android:id="@+id/item_friends"/>-->
-<!--            </group>-->
-<!--        </menu>-->
-
-<!--    </item>-->
-
     <item
         android:title="@string/trips">
         <menu>
@@ -25,10 +13,21 @@
 
             </group>
         </menu>
-
     </item>
 
-
+    <item
+        android:title="@string/account">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:title="@string/setting"
+                    android:id="@+id/setting_navigation_view"/>
+                <item
+                    android:title="@string/log_out"
+                    android:id="@+id/log_out_navigation_view"/>
+            </group>
+        </menu>
+    </item>
 
 
 </menu>
