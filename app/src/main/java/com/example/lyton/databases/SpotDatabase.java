@@ -9,7 +9,6 @@ import androidx.room.RoomDatabase;
 import com.example.lyton.dao.SpotDao;
 import com.example.lyton.model.Spot;
 
-import java.security.spec.EncodedKeySpec;
 
 @Database(entities = {Spot.class}, version = 1,exportSchema = false)
 public abstract class SpotDatabase extends RoomDatabase {

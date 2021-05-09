@@ -27,7 +27,6 @@ import java.util.List;
 public class ChatFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private DatabaseReference databaseReference;
     private UsersAdapter usersAdapter;
     private List<Users> users = new ArrayList<>();
 
@@ -49,7 +48,7 @@ public class ChatFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
         //  Database setup
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

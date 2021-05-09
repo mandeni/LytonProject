@@ -33,10 +33,6 @@ public class ChatActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<Conversation> conversations = new ArrayList<>();
 
-    private Intent intent;
-
-    private Button send;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,18 +51,17 @@ public class ChatActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         //        Receiver Id
-        intent = getIntent();
+        Intent intent = getIntent();
         final String receiverId = intent.getStringExtra("receiverId");
         final String receiverName = intent.getStringExtra("receiverName");
 
         //      Sender Information (me)
-        final String senderId = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
-        final String senderName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName().
-                toString();
+        final String senderId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        final String senderName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
 
 
         //      Send button on click
-        send = findViewById(R.id.button_send);
+        Button send = findViewById(R.id.button_send);
         send.setOnClickListener(v -> {
             EditText messageView = findViewById(R.id.message_edit_text);
             TextView senderTextView = findViewById(R.id.user_name_messages);

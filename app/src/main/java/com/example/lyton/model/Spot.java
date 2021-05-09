@@ -1,5 +1,5 @@
 package com.example.lyton.model;
-;
+
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

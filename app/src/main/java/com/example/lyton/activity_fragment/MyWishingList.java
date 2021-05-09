@@ -19,7 +19,6 @@ import java.util.List;
 public class MyWishingList extends AppCompatActivity {
 
     private SpotAdapter spotAdapter;
-    private SpotViewModel spotViewModel;
 
 
     private List<Spot> spots = new ArrayList<>();
@@ -43,7 +42,7 @@ public class MyWishingList extends AppCompatActivity {
         recyclerView.setAdapter(spotAdapter);
 
         //      View Model
-        spotViewModel = new ViewModelProvider(this).get(SpotViewModel.class);
+        SpotViewModel spotViewModel = new ViewModelProvider(this).get(SpotViewModel.class);
         spotViewModel.getAllSpot().observe(this, spots -> spotAdapter.updateData(spots));
     }
 

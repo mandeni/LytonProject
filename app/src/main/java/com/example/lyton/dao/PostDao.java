@@ -1,17 +1,13 @@
 package com.example.lyton.dao;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
-import androidx.room.Update;
 
 import com.example.lyton.model.Post;
-import com.example.lyton.model.Spot;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Dao

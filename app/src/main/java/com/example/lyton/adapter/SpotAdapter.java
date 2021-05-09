@@ -45,14 +45,11 @@ public class SpotAdapter extends RecyclerView.Adapter<SpotAdapter.ViewHolder> {
                 .load(spots.get(position).getPhotoUri())
                 .override(300,400)
                 .into(holder.imageView);
-        holder.spotLinearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri uri = Uri.parse("geo:0,0?q=" + spots.get(position).getAddress());
-                Intent map = new Intent(Intent.ACTION_VIEW, uri);
-                if (map.resolveActivity(v.getContext().getPackageManager()) != null) {
-                    v.getContext().startActivity(map);
-                }
+        holder.spotLinearLayout.setOnClickListener(v -> {
+            Uri uri = Uri.parse("geo:0,0?q=" + spots.get(position).getAddress());
+            Intent map = new Intent(Intent.ACTION_VIEW, uri);
+            if (map.resolveActivity(v.getContext().getPackageManager()) != null) {
+                v.getContext().startActivity(map);
             }
         });
     }

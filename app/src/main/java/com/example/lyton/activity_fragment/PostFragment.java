@@ -2,7 +2,6 @@ package com.example.lyton.activity_fragment;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -27,7 +26,6 @@ public class PostFragment extends Fragment {
     private PostAdapter postAdapter;
 
     private List<Post> posts = new ArrayList<>();
-    private PostViewModel postViewModel;
 
 
     public PostFragment() {
@@ -58,7 +56,7 @@ public class PostFragment extends Fragment {
         recyclerView.setAdapter(postAdapter);
 
         //        View Model setup
-        postViewModel = new ViewModelProvider(requireActivity()).get(PostViewModel.class);
+        PostViewModel postViewModel = new ViewModelProvider(requireActivity()).get(PostViewModel.class);
         postViewModel.getAllPosts().observe(getViewLifecycleOwner(), posts -> postAdapter.updateData(posts));
 
         return view;

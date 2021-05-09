@@ -15,12 +15,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.lyton.R;
-import com.example.lyton.adapter.SpotAdapter;
 import com.example.lyton.model.Spot;
 import com.example.lyton.viewModel.SpotViewModel;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class NewSpot extends AppCompatActivity {
 

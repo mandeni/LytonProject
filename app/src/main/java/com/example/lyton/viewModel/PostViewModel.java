@@ -1,17 +1,12 @@
 package com.example.lyton.viewModel;
 
 import android.app.Application;
-import android.widget.EditText;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.lyton.model.Post;
-import com.example.lyton.model.Spot;
 import com.example.lyton.repository.PostRepository;
-import com.example.lyton.repository.SpotRepository;
 
 import java.util.List;
 

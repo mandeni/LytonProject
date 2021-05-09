@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.lyton.R;
 import com.example.lyton.model.Post;
-import com.example.lyton.viewModel.PostViewModel;
 
 import java.util.List;
 

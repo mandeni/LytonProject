@@ -1,9 +1,5 @@
 package com.example.lyton.model;
 
-import android.net.Uri;
-import android.widget.ImageView;
-
-import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 

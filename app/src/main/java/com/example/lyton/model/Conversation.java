@@ -1,7 +1,5 @@
 package com.example.lyton.model;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Conversation {
 

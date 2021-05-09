@@ -3,8 +3,6 @@ package com.example.lyton.activity_fragment;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
@@ -12,22 +10,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.lyton.R;
-import com.example.lyton.adapter.SpotAdapter;
 import com.example.lyton.model.Post;
-import com.example.lyton.model.Spot;
-import com.example.lyton.viewModel.HomePageViewModel;
 import com.example.lyton.viewModel.PostViewModel;
-import com.example.lyton.viewModel.SpotViewModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class NewPost extends AppCompatActivity {
 
