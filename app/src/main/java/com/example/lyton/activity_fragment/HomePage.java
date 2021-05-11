@@ -6,14 +6,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.animation.OvershootInterpolator;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,21 +46,11 @@ public class HomePage extends AppCompatActivity{
 
     private HomePageViewModel viewModel;
 
-    private Locale locale = null;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final Configuration config = getBaseContext().getResources().getConfiguration();
-        final String language = PreferenceManager.getDefaultSharedPreferences(this).
-                getString("language", "");
-        if (!TextUtils.isEmpty(language) && !config.locale.getLanguage().equals(language))
-        {
-            locale = new Locale(language);
-            config.setLocale(locale);
-        }
         viewModel = new ViewModelProvider(this).get(HomePageViewModel.class);
         checkIfSignedIn();
         setContentView(R.layout.home_page);
@@ -131,7 +118,7 @@ public class HomePage extends AppCompatActivity{
     private void checkIfSignedIn() {
         viewModel.getCurrentUser().observe(this, user -> {
             if (user != null) {
-                String message = "Welcome " + user.getDisplayName();
+                String message = getString(R.string.welcome) + " " + user.getDisplayName();
                 Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
 
                 //  Create user in Firebase
