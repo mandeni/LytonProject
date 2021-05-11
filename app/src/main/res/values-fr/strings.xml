@@ -1,35 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--   App name-->
     <string name="app_name" translatable="false">Lyton</string>
 
     <!--   Home page -->
-    <string name="chats">Chats</string>
+    <string name="chats">Conversations</string>
     <string name="posts">Posts</string>
-    <string name="home_page">Home Page</string>
+    <string name="home_page">Accuil</string>
 
     <!--    Home page menu-->
-    <string name="setting">Settings</string>
-    <string name="log_out">Log out</string>
+    <string name="setting">Paramètre</string>
+    <string name="log_out">Se déconnecter</string>
 
     <!--    Home page FAB-->
-    <string name="new_post">New Post</string>
-    <string name="new_spot">New Spot</string>
+    <string name="new_post">Nouveau Post</string>
+    <string name="new_spot">Nouveau Site</string>
 
     <!--    New spot activity-->
-    <string name="name_of_new_spot">Name: </string>
-    <string name="country">Country: </string>
-    <string name="city">City: </string>
-    <string name="address">Address: </string>
+    <string name="name_of_new_spot">Nom: </string>
+    <string name="country">Pay: </string>
+    <string name="city">Ville: </string>
+    <string name="address">Adresse: </string>
     <string name="Description">Description: </string>
-    <string name="save">Save</string>
-    <string name="add_photo">Add photo</string>
+    <string name="save">Enregistrer</string>
+    <string name="add_photo">Ajouter une photo</string>
 
     <!--  New post activity  -->
-    <string name="done">Done</string>
+    <string name="done">Fini</string>
 
     <!--    Navigation view-->
-    <string name="trips">Trips</string>
-    <string name="my_wishing_list">My Wishing List</string>
+    <string name="trips">Voyage</string>
+    <string name="my_wishing_list">Ma Liste</string>
+    <string name="account">Compte</string>
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
 
@@ -37,9 +39,9 @@
     <string name="sign_in">Sign In</string>
 
     <!--        Preference Category-->
-    <string name="language">Language</string>
+    <string name="language">Langue</string>
     <string name="feedback">Feedback</string>
-    <string name="feedback_summary">We are glad to hear some feedback from you!</string>
+    <string name="feedback_summary">Nous avons besoin de votre conseil !</string>
 
 
     <!--        Setting language-->
@@ -52,8 +54,6 @@
     <string name="user_name">User Name</string>
     <string name="email_address">Email Address</string>
     <string name="submit">Submit</string>
-    <string name="account">Account</string>
-    <string name="langaugeSummary">Same as the phone language</string>
 
     <string-array name="language">
         <item>@string/english</item>
@@ -66,5 +66,5 @@
         <item>fr</item>
         <item>cn</item>
     </string-array>
-
+    <string name="langaugeSummary">Même que le système</string>
 </resources>

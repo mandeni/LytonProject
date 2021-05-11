@@ -1,7 +1,6 @@
 package com.example.lyton.activity_fragment;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NavUtils;
@@ -28,7 +27,7 @@ public class SettingActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        // When the home button is pressed, take the user back to the VisualizerActivity
+
         if (id == android.R.id.home) {
             NavUtils.navigateUpFromSameTask(this);
         }

@@ -1,45 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!--   App name-->
     <string name="app_name" translatable="false">Lyton</string>
 
     <!--   Home page -->
-    <string name="chats">Chats</string>
-    <string name="posts">Posts</string>
-    <string name="home_page">Home Page</string>
+    <string name="chats">聊天</string>
+    <string name="posts">动态</string>
+    <string name="home_page">主页</string>
 
     <!--    Home page menu-->
-    <string name="setting">Settings</string>
-    <string name="log_out">Log out</string>
+    <string name="setting">设置</string>
+    <string name="log_out">退出</string>
 
     <!--    Home page FAB-->
-    <string name="new_post">New Post</string>
-    <string name="new_spot">New Spot</string>
+    <string name="new_post">新动态</string>
+    <string name="new_spot">新景点</string>
 
     <!--    New spot activity-->
-    <string name="name_of_new_spot">Name: </string>
-    <string name="country">Country: </string>
-    <string name="city">City: </string>
-    <string name="address">Address: </string>
-    <string name="Description">Description: </string>
-    <string name="save">Save</string>
-    <string name="add_photo">Add photo</string>
+    <string name="name_of_new_spot">名字：</string>
+    <string name="country">国家：</string>
+    <string name="city">城市：</string>
+    <string name="address">地址：</string>
+    <string name="Description">详情：</string>
+    <string name="save">保存</string>
+    <string name="add_photo">添加照片</string>
 
     <!--  New post activity  -->
-    <string name="done">Done</string>
+    <string name="done">完成</string>
 
     <!--    Navigation view-->
-    <string name="trips">Trips</string>
-    <string name="my_wishing_list">My Wishing List</string>
+    <string name="trips">旅游</string>
+    <string name="my_wishing_list">我的景点</string>
+    <string name="account">账户</string>
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
 
     <!--  Sign in activity  -->
-    <string name="sign_in">Sign In</string>
+    <string name="sign_in">注册</string>
 
     <!--        Preference Category-->
-    <string name="language">Language</string>
-    <string name="feedback">Feedback</string>
-    <string name="feedback_summary">We are glad to hear some feedback from you!</string>
+    <string name="language">语言</string>
+    <string name="feedback">反馈</string>
+    <string name="feedback_summary">您的反馈是我们前进的动力！</string>
 
 
     <!--        Setting language-->
@@ -52,8 +55,6 @@
     <string name="user_name">User Name</string>
     <string name="email_address">Email Address</string>
     <string name="submit">Submit</string>
-    <string name="account">Account</string>
-    <string name="langaugeSummary">Same as the phone language</string>
 
     <string-array name="language">
         <item>@string/english</item>
@@ -66,5 +67,5 @@
         <item>fr</item>
         <item>cn</item>
     </string-array>
-
+    <string name="langaugeSummary">跟随手机系统语言</string>
 </resources>

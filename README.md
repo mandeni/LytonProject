@@ -50,7 +50,7 @@ APP could add a background music for a post
 
 APP could allow user to upload a video
 
-APP could have 3 different languages (English, French, Chinese)
+APP could have 3 different languages (English, French, Chinese) (fulfilled, same language as phone)
 
 APP could suggest "is this what you're looking for" if user is adding a tourist spot which is already added by someone else
 
